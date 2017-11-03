@@ -1,0 +1,194 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en">
+
+<head>
+
+  <title>Generic Databrowser</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="keyword1, keyword2" />
+  <meta name="description" content="One sentence description that will appear in search engine summaries." />
+  <meta name="author" content="mazamascience.com" />
+
+  <!-- JAVASCRIPT
+
+         jquery:                   core
+         jquery.bgiframe:          needed by jquery-ui
+         jquery-ui:                UI widgets      
+         jquery.hoverIntent:       needed by cluetip
+         jquery.cluetip:           tooltips
+         purl:                     URL parsing for incoming parameters
+         Mazama_databrowser:       databrowser custom behavior
+  -->
+  <script type="text/javascript" src="behavior/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="behavior/jquery.hoverIntent.minified.js"></script>
+  <script type="text/javascript" src="behavior/jquery.bgiframe.min.js"></script>
+  <script type="text/javascript" src="behavior/jquery-ui-1.10.3.custom.min.js"></script>
+  <script type="text/javascript" src="behavior/jquery.cluetip.min.js"></script>
+  <script type="text/javascript" src="behavior/purl.js"></script> 
+  <script type="text/javascript" src="behavior/Mazama_databrowser.js"></script>
+  <!-- If google map is used source the needed js api
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  -->
+     
+  <!-- CASCADING STYLESHEETS
+
+         blueprint/*:              framework
+         jquery-ui-*:              UI widgets theme 
+         jquery.cluetip:           tooltips theme
+         Mazama_databrowser_base:  default databrowser theme
+         Mazama_databrowser:       custom databrowser theme
+  -->
+  <link rel="stylesheet" href="style/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="style/blueprint/print.css"  type="text/css" media="print"> 
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" href="style/blueprint/ie.css" type="text/css" media="screen, projection">
+  <![endif]-->
+
+  <!-- Two example themes from jquery-ui.  Use one or the other.
+  <link type="text/css" href="style/jquery-ui-smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />  
+  <link type="text/css" href="style/jquery-ui-hot-sneaks/jquery-ui-1.10.3.custom.css" rel="stylesheet" />  
+  -->
+  <link type="text/css" href="style/jquery-ui-smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />  
+
+  <link rel="stylesheet" href="style/jquery.cluetip.css">
+  <!-- iPhone specific style -->
+  <meta name="viewport" content="user-scalable=no, width=device-width" /> <!-- zooms based on the screen size of devise -->
+  <link rel="stylesheet" type="text/css" href="style/iphone.css" media="only screen and (max-width: 480px)" />
+  <!--[if IE]> 
+    <link rel="stylesheet" type="text/css" href="explorer.css" media="all" /> 
+  <![endif]-->
+  <link rel="stylesheet" href="style/Mazama_databrowser_base.css"> <!--This is what a browser should look like out of box -->
+  <link rel="stylesheet" href="style/Mazama_databrowser_iframe.css"> <!--This is where we change style for a specific browser -->
+
+</head> 
+
+<body>
+
+<div id="databrowserWrapper" class="container">
+
+  <div id="databrowser" class="container">
+
+    <div id="controls" class="span-8">
+
+      <!-- Everything in this continer not of class ".doNotSerialize" will be serialized -->
+      <form id="controlsForm" name="controlsForm">
+
+        <!-- The following variables are hidden but can be set in javascript. -->
+        <input id="language"  type="hidden" name="language"  value="en">
+        <input id="plotType"  type="hidden" name="plotType"  value="TrigFunctions">
+        <input id="plotWidth" type="hidden" name="plotWidth" value="500">
+        <input id="cycles"    type="hidden" name="cycles"    value="3">
+        
+        <!-- Analysis options go here  -->
+        <div id="analysisContainer" class="controlContainer">
+
+          <fieldset id="analysis">
+            <legend>
+              <span id="analysis_legend">
+              <span class="tooltip" id="tooltipAnalysis.html" title="Analysis">
+                <img class="tooltipIcon" src="style/images/info_icon_question.jpeg" />
+              </span>
+                Analysis
+            </legend>
+            <select id="trigFunction" name="trigFunction">
+              <option selected value="cos">cosine</option>
+              <option value="sin">sine</option>
+              <option value="tan">tangent</option>
+              <option value="acos">arc cosine</option>
+              <option value="asin">arc sine</option>
+              <option value="atan">arc tangent</option>
+              <option value="generateError">generate R error</option>
+            </select>
+
+          </fieldset>
+          <!-- END of analysis -->
+
+        </div>
+        <!-- END of analysis_conainer -->
+
+        <div id="plotOptionsContainer" class="controlContainer">
+          <fieldset id="plotOptions">
+            <legend>
+              <span class="tooltip" id="tooltipPlotOptions.html" title="Plot Options">
+                <img class="tooltipIcon" src="style/images/info_icon_question.jpeg" />
+              </span>
+              Plot Options
+            </legend>
+           
+            <label for="lineColor">Line color:</label><br>
+            <select id="lineColor" name="lineColor">
+              <option selected value="black">black</option>
+              <option value="red">red</option>
+              <option value="blue">blue</option>
+            </select>
+            <br />
+
+            <div id="datepickerAccordion">
+              <h3>Unused Calendar</h3>
+              <div id="datepicker"></div>
+            </div>
+            
+            <br/>
+            <label for="cyclesSlider">x upper limit:</label><br>
+            <div id="cyclesSlider"></div>
+
+
+            <!-- Room for other plot options here. -->
+
+          </fieldset>
+          
+          
+        </div>
+        <!-- END of plotOptionsContainer -->
+        
+        <!-- Room for an analysis figure here -->
+        <!--
+        <div id="analysisFigureContainer" class="controlContainer">
+          <fieldset id="AnalysisPlotOptions">
+            <legend>
+              <span class="tooltip" id="tooltipAnalysisPlotOptions.html" title="Plot Options">
+                <img class="tooltipIcon" src="style/images/info_icon_question.jpeg" />
+              </span>
+              Analysis Plot Options
+            </legend>
+          </fieldset>
+         
+          <div>
+            <img id="analysisPlot" />
+          </div>
+          
+        </div>
+        -->
+          
+        <div id="spinnerContainer" class="controlContainer">
+          <img id="spinner" src="style/images/spinner.gif" />
+        </div>
+
+      </form>
+      <!-- END of controlsForm -->
+
+    </div>
+    <!-- END of controls -->
+    
+    <div id="plotContainer" class="span-16 last">
+      
+      <!-- Google map canvas   
+      <div id="mapCanvas"></div>
+      -->
+
+      <div id="requestMessage">Explore Your Data!</div>
+
+      <div>
+        <img id="plot" />
+      </div>
+
+    </div>
+
+  </div>
+  <!-- END of databrowser div-->
+
+</div>
+<!-- END of databrowserWrapper div-->
+
+</body>
+</html>

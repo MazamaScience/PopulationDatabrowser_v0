@@ -1,0 +1,92 @@
+/* OVERRIDE BLUEPRINT........................................................ */
+
+table.layout tbody tr:nth-child(2n) td, table.layout tbody tr.even td {
+  background: none;
+}
+
+table.layout th, table.layout td {
+  padding: 0px;
+}
+
+/* BODY ..................................................................... */
+
+body {
+	font: 76%/1.5 Verdana,Arial,Helvetica,sans-serif;
+}
+
+/* HEADER ....................................................................*/
+
+#header {
+  height: 40px;
+  background-color: #eee;
+  font: 30px Georgia,Verdana,Arial,Helvetica,sans-serif;
+  text-align: left;
+  margin: 0 10px;
+}
+
+/* NAVBAR ...................................................................*/
+
+#navbar {
+  margin: 0 10px;
+  padding: 5px 0px;
+  background-color: #aaa;
+  text-align: right;
+  color: #fff;
+  font: 1.5em trebuchet ms,verdana,bitstream vera sans,sans-serif;
+  letter-spacing: 0.1em;
+}
+
+#navbar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#navbar a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+#navbar #navlist {
+  display: inline;
+  list-style-type: none;
+}
+
+#navbar #navlist li {
+  display: inline;
+  vertical-align: middle;
+  padding: 0 5px;
+}
+
+#navbar #databrowserTitle {
+  float:  left;
+  padding: 0 10px;
+}
+/* DATABROWSER ...............................................................*/
+
+/* .... CONTROLS .............................................................*/
+
+/* .... .... ANALYSIS ........................................................*/
+
+/* .... .... PLOT OPTIONS ....................................................*/
+
+/* .... .... TOOLTIPS ........................................................*/
+
+img.tooltipIcon:hover {
+  cursor: help;
+}
+
+/*
+ * NOTE:  The tooltips share styling with jquery-ui widgets.  If you really want
+ * NOTE:  a different theme then you should get a new one from jqueryui.com.
+ */
+
+/* .... .... SPINNER .........................................................*/
+
+/* .... PLOT_CONTAINER .......................................................*/
+
+/* .... .... REQUEST MESSAGE .................................................*/
+
+/* .... .... PLOT ............................................................*/
+
+/* FOOTER ....................................................................*/
+

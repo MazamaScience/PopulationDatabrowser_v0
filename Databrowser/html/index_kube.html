@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>TrigFunctions Databrowser</title>
+  <meta name="keywords" content="keyword1, keyword2" />
+  <meta name="description" content="One sentence description that will appear in search engine summaries." />
+  <meta name="author" content="mazamascience.com" />
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />	
+		
+		
+	<link rel="stylesheet" href="style/kube/kube.min.css">
+	<link type="text/css" href="style/jquery-ui-smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />  
+	<link rel="stylesheet" href="style/jquery.cluetip.css">
+	
+	<link rel="stylesheet" href="style/kube/Mazama_databrowser_kube.css"> 
+	<!-- browser specific styles later  
+	<link rel="stylesheet" href="style/Mazama_databrowser.css"> 
+  -->
+		
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	================================================== -->
+		
+
+	
+  <!-- JAVASCRIPT
+
+         jquery:                   core
+         jquery.bgiframe:          needed by jquery-ui
+         jquery-ui:                UI widgets      
+         jquery.hoverIntent:       needed by cluetip
+         jquery.cluetip:           tooltips
+         purl:                     URL parsing for incoming parameters
+         Mazama_databrowser:       databrowser custom behavior
+  -->
+		
+  <script type="text/javascript" src="behavior/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="behavior/jquery.hoverIntent.minified.js"></script>
+  <script type="text/javascript" src="behavior/jquery.bgiframe.min.js"></script>
+  <script type="text/javascript" src="behavior/jquery-ui-1.10.3.custom.min.js"></script>
+  <script type="text/javascript" src="behavior/jquery.cluetip.min.js"></script>
+  <script type="text/javascript" src="behavior/purl.js"></script> 
+  <script type="text/javascript" src="behavior/Mazama_databrowser.js"></script>
+	<!-- If google map is used source the needed js api
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  -->
+
+</head>
+<body>
+  			
+  <div id="navbar" class="segment">
+    <span id="databrowserTitle">TrigFunctions databrowser</span>
+    <!-- The "navlist" provides an easy way to link to other information. -->
+    <ul id="navlist">
+      <li><a href="">Link 1</a></li>
+      <li><a href="">Link 2</a></li>
+    </ul>
+  </div>
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+
+	<div id="databrowser" class="units-row">
+				
+    <!-- Everything in this continer not of class ".doNotSerialize" will be serialized -->
+    <form id="controlsForm" name="controlsForm" class="unit-35">
+			
+      <!-- The following variables are hidden but can be set in javascript. -->
+      <input id="language"  type="hidden" name="language"  value="en">
+      <input id="plotType"  type="hidden" name="plotType"  value="TrigFunctions">
+      <input id="plotWidth" type="hidden" name="plotWidth" value="500">
+			<input id="cycles"    type="hidden" name="cycles"    value="3">
+					
+				<fieldset id="analysis">
+         
+				  <!-- Old way
+				  <legend>
+            <span id="analysis_legend">
+            <span class="tooltip" id="tooltipAnalysis.html" title="Analysis">
+              <img class="tooltipIcon" src="style/images/info_icon_question.jpeg" />
+            </span>
+              Analysis
+          </legend>
+					-->
+					<h3>          
+					  <span class="tooltip" id="tooltipAnalysis.html" title="Analysis">
+              <img class="tooltipIcon" src="style/images/info_icon_question.jpeg" />
+            </span>
+					  Analysis
+				  </h3>
+				 
+				  <h5>Trig Function:</h5>
+					<select id="trigFunction" name="trigFunction">
+						<option selected value="cos">cosine</option>
+						<option value="sin">sine</option>
+						<option value="tan">tangent</option>
+						<option value="acos">arc cosine</option>
+						<option value="asin">arc sine</option>
+						<option value="atan">arc tangent</option>
+						<option value="generateError">generate R error</option>
+					</select>
+					<br/>
+				
+			  </fieldset>
+	      <!-- End of analysis fieldset -->
+				
+        <fieldset id="plotOptions" class="boxed">
+					
+					<h3>
+            <span class="tooltip" id="tooltipPlotOptions.html" title="Plot Options">
+              <img class="tooltipIcon" src="style/images/info_icon_question.jpeg" />
+            </span>
+						Plot Options
+					</h3>
+					
+          <h5>Line color:</h5>
+          <select id="lineColor" name="lineColor">
+            <option selected value="black">black</option>
+            <option value="red">red</option>
+            <option value="blue">blue</option>
+          </select>
+          <br/>
+
+          <br/>
+          <div id="datepickerAccordion">
+            <h3>Unused Calendar</h3>
+            <div id="datepicker"></div>
+          </div>
+					
+          <br/>
+          <h5>x upper limit:</h5>
+					<div id="cyclesSlider"></div>
+					<br/>
+					<button class="btn-blue">Regular Button</button>
+					
+
+
+          <!-- Room for other plot options here. -->
+
+        </fieldset>
+		
+	      <div id="spinnerContainer" class="controlContainer">
+	        <img id="spinner" src="style/images/spinner.gif" />
+	      </div>
+			
+		</form><!-- End of form-->
+			
+			
+		<div id="plotContainer" class="unit-50">
+			
+			<div id="requestMessage"></div>
+			
+      <div>
+        <img id="plot" />
+      </div>
+			
+			<!-- Google map canvas 	
+	    <div id="mapCanvas"></div>
+			-->
+			
+
+		</div><!-- End of plot container -->
+		
+			
+
+	</div>
+	<!-- End of container -->
+
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

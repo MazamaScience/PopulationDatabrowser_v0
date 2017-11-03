@@ -1,0 +1,186 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en">
+
+<head>
+
+  <title>Population Databrowser</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="keyword1, keyword2" />
+  <meta name="description" content="One sentence description that will appear in search engine summaries." />
+  <meta name="author" content="mazamascience.com" />
+
+  <!-- JAVASCRIPT
+
+         jquery:                   core
+         jquery.bgiframe:          needed by jquery-ui
+         jquery-ui:                UI widgets      
+         jquery.hoverIntent:       needed by cluetip
+         jquery.cluetip:           tooltips
+         purl:                     URL parsing for incoming parameters
+         chosen:                   jQuery multiple select menu 
+         Mazama_databrowser:       databrowser custom behavior
+  -->
+  <script type="text/javascript" src="behavior/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="behavior/jquery.hoverIntent.minified.js"></script>
+  <script type="text/javascript" src="behavior/jquery.bgiframe.min.js"></script>
+  <script type="text/javascript" src="behavior/jquery-ui-1.10.3.custom.min.js"></script>
+  <script type="text/javascript" src="behavior/jquery.cluetip.min.js"></script>
+  <script type="text/javascript" src="behavior/purl.js"></script> 
+  <script type="text/javascript" src="behavior/chosen.jquery.js"></script>
+<!--   // <script type="text/javascript" src="behavior/Mazama_databrowser.js"></script> -->
+
+  <!-- If google map is used source the needed js api
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  -->
+     
+  <!-- CASCADING STYLESHEETS
+
+         blueprint/*:              framework
+         jquery-ui-*:              UI widgets theme 
+         jquery.cluetip:           tooltips theme
+         Mazama_databrowser_base:  default databrowser theme
+         chosen:                   custon theme for select menus
+         Mazama_databrowser:       custom databrowser theme
+  -->
+  <link rel="stylesheet" href="style/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="style/blueprint/print.css"  type="text/css" media="print"> 
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" href="style/blueprint/ie.css" type="text/css" media="screen, projection">
+  <![endif]-->
+
+  <!-- Two example themes from jquery-ui.  Use one or the other.
+  <link type="text/css" href="style/jquery-ui-smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />  
+  <link type="text/css" href="style/jquery-ui-hot-sneaks/jquery-ui-1.10.3.custom.css" rel="stylesheet" />  
+  -->
+  <link type="text/css" href="style/jquery-ui-smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />  
+  <link rel="stylesheet" href="style/jquery.cluetip.css">
+  <!-- iPhone specific style -->
+  <meta name="viewport" content="user-scalable=no, width=device-width" /> <!-- zooms based on the screen size of devise -->
+  <link rel="stylesheet" type="text/css" href="style/iphone.css" media="only screen and (max-width: 480px)" />
+  <!--[if IE]> 
+    <link rel="stylesheet" type="text/css" href="explorer.css" media="all" /> 
+  <![endif]-->
+  <link rel="stylesheet" href="style/Mazama_databrowser_base.css"> <!--This is what a browser should look like out of box -->
+  <link type="text/css" rel="stylesheet" href="style/chosen/chosen.css">
+  <link type="text/css" rel="stylesheet" href="style/chosen/chosen1.css">
+  <link rel="stylesheet" href="style/Mazama_databrowser.css"> <!--This is where we change style for a specific browser -->
+
+</head> 
+
+<body>
+
+  <div id="header">
+  </div>
+  
+  <div id="headWrapper">
+    <div id="navbar">
+      <span id="databrowserTitle">Population Databrowser</span>
+      <!-- The "navlist" provides an easy way to link to other information. -->
+      <ul id="navlist">
+        <a href="source.html"><li>Source</li></a>
+        <a href="documentation.html"><li class="active">Documentation</li></a>
+        <a href="index.html"><li>Databrowser</li></a>
+      </ul>
+    </div>
+  </div>
+
+  <div id="databrowser" class="container">
+
+    <div id="text-wrapper">
+
+    <h1>About the Population databrowser</h1>
+
+      <p>
+        Understanding global population trends is extremely important for anyone making projections regarding economics and natural resource usage.
+        The Population databrowser is a <i>pro bono</i> data visualization service provided by <a href="http://mazamascience.com">Mazama Science</a> 
+        to promote a better understanding of existing and projected population trends throughout the world.
+      </p>
+
+      <p>
+        The user interface strives to be as simple as possible:
+        <ul>
+          <li>click on a flag to change the language</li>
+          <li>click on a selector to activate that selector</li>
+          <li>scroll or type to select a country or country group</li>
+          <li>the URL in your browser toolbar can be shared and links to the databrowser, initialized with a country and language</li>
+        </ul>
+      </p>
+
+    <h1>About the Data</h1>
+
+      <p>
+        The Population databrowser uses data from the December 2013 release of th US Census Bureau's 
+        <a href="http://www.census.gov/population/international/data/idb/">International Data Base</a> (IDB).
+        Full details on the methodology used to create this dataset are available in 
+        <a href="http://www.census.gov/population/international/data/idb/estandproj.pdf">Population Estimates and Projections Methodology</a>.
+        Additional information is found in the IDB <a href="http://www.census.gov/population/international/data/idb/rel_notes.php">Release Notes</a>.
+      </p>
+
+      <p>
+        The following brief overview is excerpted from the Methodology document:
+      </p>
+
+      <blockquote>
+        <p>
+The Census Bureau’s IDB estimates and projections have several distinguishing features. For countries and areas recognized by the U.S. Department of State and which have populations of 5,000 or more, population size and components of change are provided for each calendar year beyond the initial or base year, through 2050. Within this time series, sex ratios, population, and mortality measures are developed for single-year ages through age 100-plus. As a result of single-year age and calendar-year accounting, IDB data capture the timing and demographic impact of important events such as wars, famine, and natural disasters, with a precision exceeding that of other online resources for international demographic data.
+        </p>
+        <p>
+The estimation and projection process involves data collection, data evaluation, parameter estimation, making assumptions about future change, and final projection of the population for each country. The Census Bureau begins the process by collecting demographic data from censuses, surveys, vital registration, and administrative records from a variety of sources. Available data are evaluated, with particular attention to internal and temporal consistency.
+        </p>
+        <p>
+The Census Bureau strives to base the population estimates and projections for each country on a modified <i>de facto</i> population universe whenever possible. A strict interpretation of the <i>de facto</i> population includes all persons who are physically present in the country at the reference date, whether or not they are usual and/or legal residents. In contrast, the <i>de jure</i> population consists of all usual residents, whether or not they are present at the reference time. Our estimates and projections exclude foreign military populations, tourists, and others visiting for short periods from the country’s <i>de facto</i> population. It is not always easy to adjust the data to represent this modified <i>de facto</i> population universe. After appropriate adjustments are made, the data are then used to estimate population by single years of age, as well as to estimate the fertility, mortality, and migration parameters needed for population projection.
+        </p>
+      </blockquote>
+
+    <h1>Interpreting Plots</h1>
+
+      <p>
+        The plots in the Population databrowser emphasize year-over-year changes in population
+        (the 'first derivative' for those who studied calculus). The exaggerated scale of the 
+        lower "Annual Change" plot makes it easy to see unusual events in the population timeseries that can be 
+        missed in the upper "Population" plot.
+      </p>
+
+      <p>
+        Noticing and researching these unusual events can be a particularly enlightening experience for anyone
+        with a historical bent. Rapidly scanning a series of different countries by typing their names 
+        into a selector is similarly
+        informative. Below we present a few individual countries with some interpretation to whet your appetite
+        for exploring the human stories found in this rich dataset.
+      </p>
+
+      <h2>Iran</h2>
+
+      <img src="docs/IranPopulation.png" />
+
+      <p>Iran has a very unusual profile. The population growth rises above 4% and then very quickly declines to under 1% in just two years. So what changed?</p>
+      <p>In the late 1980's Iran's new government decided that it's rapidly growing population was soon going to exceed the country's available resources. In an attempt to curb overpopulation Iran launched a massive nationwide program to introduce and distribute contraceptives. The government declared it was religiously favorable for families to only have two children. In the early 1990's Iran passed legislation restricting maternity leave, food coupons, and welfare to families with more than three children. They also mandated birth control classes to engaged couples.</p>
+      <p>However, one can expect to see another increase in Iran's population growth in the near future. President Ahmadinejad recently reversed this legislation and Iran's two child policy, calling for an increase in Iran's population from 70 million to 120 million.</p>
+      <p>For more information see Wikipedia:  <a href="http://en.wikipedia.org/wiki/Family_planning_in_Iran">Family Planning in Iran</a></p>
+
+      <h2>Estonia</h2>
+ 
+      <img src="docs/EstoniaPopulation.png" />
+
+      <p>Estonia's population has shrunk to it's level in 1963 due to a sharp decline in the early 1990's following decades of steady growth. As you might guess from the dates, this is directly related to Estonia's independence following the breakup of the Soviet Union.</p>
+      <p>What this figure doesn't show is a massive decline in Estonia's population prior to 1950. More than 10% of Estonia's population was forcibly deported and tens of thousands more fled to other countries. The period of growth shown between 1950 and 1990 is a combination of Estonian deportees returning home and the Soviet Union's relocation of migrants to Estonia. This stopped when Estonia gained independence in 1991, which was followed by the gradual emigration of Soviet migrants.</p>
+      <p>For more information see Wikipedia: <a href="http://en.wikipedia.org/wiki/Estonia">Estonia</a></p>
+      
+      <h2>Jordan</h2>
+ 
+      <img src="docs/JordanPopulation.png" />
+
+      <p>Jordan's staggering population growth is a result of its role in the Middle East. It relies on foreign aid and in return hosts Arab refugees from a variety of countries. Jordan's intake of refugees began with the exodus of Palestinians in 1948 and continues to this day with the conflict in Syria.</p>
+      <p>Most notable in this figure are three peaks of growth which can be easily matched to events of that period. The spike of growth in 1967 and 1968 is more Palestinian refugees fleeing Israel's occupation of the West Bank during the Arab-Israeli war. The 1991 Gulf War led as many as 1 million Iraqi refugees escaping to Jordan. More still immigrated in the 2000's during the second Iraq conflict.</p>
+      <p>The IDB projections for Jordan were last updated in 2009. Projections at that time anticipated a slight population decline in 2012-2013, presumably Iraqi's returning home to what some then imagined would be a safe and prosperous new Iraq. Instead, we know from news reports that more than half a million new Syrian refugees have taken up residence in Jordan.</p>
+      <p>For more information see Migration Policy Institute: <a href="http://www.migrationpolicy.org/article/jordan-refugee-haven">Jordan: A Refugee haven</a></p>
+      
+    </div>
+
+  
+  </div>
+
+
+
+</body>
+</html>

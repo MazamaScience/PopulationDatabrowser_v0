@@ -1,0 +1,203 @@
+
+<html>
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="chosen/chosen.jquery.js"></script>
+	<link type="text/css" rel="stylesheet" href="chosen/chosen.css">
+	<style>
+
+		body {
+			font-family: helvetica;
+			margin:0;
+			color: rgb(30,30,300px);
+		}
+
+		#wrapper {
+			width:800;
+			margin:0 auto;
+			padding-top: 15px;
+		}
+
+		#menu {
+			float:left;
+			width:350px;
+		}
+
+		#plot {
+			box-sizing:border-box;
+			padding:5px;
+			float:right;
+			width:450px;
+		}
+
+		p {
+			font-size:0.8em;
+			padding:0 23px;
+		}
+
+		h2 {
+			margin:10px 10px 10px 23px;
+			padding-bottom:7px;
+		}
+
+		#pic {
+			width:100%;
+		}
+
+		.chosen {
+			width:250px;
+		}
+
+		fieldset {
+		  	border: none;
+		 }
+
+		label {
+			font-size:0.8em;
+			margin-left:1px;
+			font-weight:500;
+		}
+
+		.flag {
+			width:28px;
+		}
+
+		ul {
+			list-style:none;
+			padding:0;
+		}
+
+		.flagList {
+			box-sizing:border-box;
+			padding: 0px 6px;
+			margin: 1px;
+			float:left;
+			border:1px solid white;
+		}
+
+		.flagList:hover{
+			border:1px solid rgb(180,180,180);
+			background:rgb(245,245,245);
+		}
+
+		.flagList.selected{
+			border:1px solid rgb(180,180,180);
+			background:rgb(245,245,245);
+		}
+
+		.flagList:active{
+			border:1px solid rgb(180,180,180);
+			background:rgb(220,220,220);
+		}
+
+
+	</style>
+</head>
+<body>
+	<script>
+			$(document).ready(function(){
+
+               var init_language = 'en';
+               var init_country = 'US';
+
+               $.getJSON( "test.json", function( data ) {
+
+                    $(".chosen").chosen({disable_search_threshold: 15});
+
+                    dataset = data;
+                    
+                     function newLanguage(language, country){
+                         var textList = dataset[language];
+
+                         $("#header").html(textList.html["header"]);
+                         $("#country_menu").html(textList.html["country_menu"]);
+                         $("#projection_button").html(textList.html["projection_button"]);
+                         $("#language_menu").html(textList.html["language_menu"]);
+
+                         console.log(country);
+                         console.log(language);
+
+                         $(".chosen").empty();
+                         var country_output = [];
+                         var language_output = [];
+
+                         country_list = textList.countries.sort(SortByName);
+
+                         $.each(country_list, function(){
+                           country_output.push('<option value="'+ this.code +'">'+ this.name +'</option>');
+                         });
+
+                         $.each(textList.languages, function(key, val){
+                           language_output.push('<option value="'+ this.code +'">'+ this.name +'</option>');
+                         });
+
+                         $('#countryCode').html(country_output.join(''));
+                         $('#language').html(language_output.join(''));
+
+                         $("#countryCode").val(country);
+                         $("#language").val(language);
+
+                         $(".chosen").trigger("chosen:updated")
+
+                    };
+
+                    function SortByName(a, b){
+                         var aName = a.name.toLowerCase();
+                         var bName = b.name.toLowerCase(); 
+                         return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+                    }
+
+                    newLanguage(init_language, init_country);
+
+                    $("#language").change(function(){
+                         newLanguage(this.value, $("#countryCode").val());
+                    })
+
+                    $("#countryCode").change(function(){
+
+                    })
+               });
+
+			});
+	</script>
+
+
+<div id="wrapper">
+	<div id="menu">
+		<h2 id="header"></h2>
+	<!-- 	<p>Explore the US Census Bureau's <a href="http://www.census.gov/population/international/">Internation Data Base</a></p> -->
+		<fieldset>
+	<label id="country_menu"></label>
+	<select class="chosen" id="countryCode" name="countryCode">
+         
+     </select>
+
+
+
+<!--      <label id="language_menu"></label>
+     <select class="chosen" id="language">
+     </select> -->
+
+     <label id="projection_button"></label> 
+     <input type="checkbox" name="projection" value="projection">
+
+     <br>
+
+     <label id="language_menu"></label>
+     <ul>
+		<li class="selected flagList" value='EN'><img class="flag" src="flags/US.png"></li>
+		<li class="flaglist" value='ES'><img class="flag" src="flags/ES.png"></li>
+		<li class="flaglist" value='FR'><img class="flag" src="flags/FR.png"></li>
+		<li class="flaglist" value='AL'><img class="flag" src="flags/DE.png"></li>
+		<li class="flaglist" value='EN'><img class="flag" src="flags/IT.png"></li>
+	</ul>
+
+</fieldset>
+</div>
+<div id='plot'>
+<img id="pic" src="plot.png"
+	</div>
+
+</div>
+</body>
+</html>

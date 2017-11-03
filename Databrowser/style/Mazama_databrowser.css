@@ -1,0 +1,261 @@
+/* Override settings in Mazama_databrowser_base.css */
+
+/* BODY ..................................................................... */
+body {
+	font: 1.2em "Helvetica Neue", Helvetica, sans-serif;
+	font-weight: 300;
+	margin: 0;
+	color: rgb(30,30,30);
+	letter-spacing: 1px;
+}
+
+p {
+	font-size: 1em;
+	line-height: 130%;
+	margin-bottom: 20px;
+}
+
+h1 {
+	font-size: 1.5em;
+	font-weight: 700;
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+
+h2 {
+	font-size: 1.2em;
+	font-weight: 700;
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+
+label {
+	display: block;
+	font-size: 1em;
+	margin: 0 2px;
+	padding: 0 0 5px 0;
+	font-weight: inherit;
+}
+
+
+
+/* HEADER ....................................................................*/
+#header {
+  	display: none;
+}
+
+/* NAVBAR ....................................................................*/
+
+#headWrapper {
+  width: 100%;
+  background-color: rgb(245,245,245);
+  border-bottom: 1px solid rgb(180,180,180);
+}
+
+#navbar {
+	box-sizing: border-box;
+	background-color: transparent;
+	padding: 0 5px;
+	margin: 0px auto;
+	height: 60px;
+	width: 900px;
+	color: rgb(30,30,30);
+	font: 1em "Helvetica Neue", Helvetica, sans-serif;
+	letter-spacing: 1px;
+}
+
+#navbar a {
+  color: rgb(30,30,30);
+}
+
+#navbar a:hover {
+  color: rgb(30,30,30);
+  text-decoration: underline;
+}
+
+#navbar #navlist {
+	height: 60px;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar #navlist li {
+  box-sizing: border-box;
+  font-weight: 200;
+  line-height: 30px;
+  display: block;
+  float: right;
+  padding: 15px 20px;
+}
+
+#navbar #navlist li.active {
+	box-sizing: border-box;
+	background-color: rgb(235,235,235);
+	border-left: 1px solid rgb(180,180,180);
+	border-right: 1px solid rgb(180,180,180);
+}
+
+#navbar #navlist li:hover{
+	background-color: rgb(235,235,235);
+}
+
+#navbar #databrowserTitle {
+  font-weight: 300;
+  float: left;
+  padding: 0 10px;
+  font-size: 1em;
+  line-height: 60px;
+
+}
+
+
+/* DATABROWSER ...............................................................*/
+#databrowser {
+	width: 900px;
+	padding-top: 40px;
+}
+
+/* .... CONTROLS .............................................................*/
+#controls {
+	float: left;
+	width: 295px;
+	margin: 0;
+	margin-top: 20px;
+	padding: 0;
+}
+
+#controlsForm {
+	padding: 10px;
+}
+
+.option {
+	margin-bottom: 17px;
+}
+
+.chosen {
+	width: 100%;
+	margin: 1px;
+}
+
+#language_list {
+	list-style: none;
+	padding: 0;
+	margin:0;
+	white-space: normal;
+	font-size: 0;
+	background-color: rgb(245,245,245);
+	border: solid 1px rgb(100,100,100);
+}
+
+.flagLi {
+	box-sizing:border-box;
+	padding: 2px 6px;
+	margin: 0;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.flagLi.selected{
+	background-color: #3498db;
+}
+
+.flagLi:hover{
+	background-color: white;
+}
+
+.flagLi:active{
+	background-color: #3498db;
+}
+
+.flag {
+	width:27px;
+}
+
+/* .... .... ANALYSIS ........................................................*/
+#analysis {
+	border:none;
+}
+
+
+/* .... .... PLOT OPTIONS ....................................................*/
+
+/* .... .... TOOLTIPS ........................................................*/
+
+/* .... .... SPINNER .........................................................*/
+
+/* .... PLOT_CONTAINER .......................................................*/
+#plotContainer {
+	box-sizing: border-box;
+	padding: 5px;
+	float: right;
+	width: 560px;
+}
+/* .... .... REQUEST MESSAGE .................................................*/
+
+/* .... .... PLOT ............................................................*/
+#plot {
+	width: 100%;
+	padding: 10px;
+}
+
+/* FOOTER ....................................................................*/
+
+div#contactDiv {
+  padding-left: 10px;
+}
+
+div#contactDiv > address {
+  position: absolute;
+  top: 635px;
+  padding-left: 5px;
+  font-size: 0.8em;
+}
+  
+
+
+
+
+/* SOURCE AND DOCUMENTATION ..................................................*/
+#text-wrapper {
+
+	box-sizing: border-box;
+	margin: 0 auto;
+	width: 650;
+	line-height: 130%;
+}
+
+#text-wrapper p {
+	line-height: 130%;
+}
+
+#contents {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 60px;
+}
+
+#text-wrapper img {
+	display: block;
+	margin: 0 auto;
+}
+
+#download {
+	width: 200px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	margin: 40px auto;
+	background-color: #3498db;
+	color: white;
+	border: solid 1px rgb(100,100,100);
+	cursor:pointer;
+}
+
+#download:hover {
+	background-color: white;
+	color: rgb(30,30,30);
+	border: solid 1px rgb(100,100,100);
+}
+
+
+

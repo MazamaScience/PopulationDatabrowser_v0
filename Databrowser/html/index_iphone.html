@@ -1,0 +1,111 @@
+<!-- clean version of html for Mazama Science Generic Databrowser -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en">
+
+<head>
+
+  <title>TrigFunctions Databrowser</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="keyword1, keyword2" />
+  <meta name="description" content="One sentence description that will appear in search engine summaries." />
+  <meta name="author" content="mazamascience.com" />
+
+<!--
+The databrowser relies on javascript functionality found in the jquery javascript library.
+-->
+  <script type="text/javascript" src="behavior/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="behavior/jquery.hoverIntent.minified.js"></script>
+  <script type="text/javascript" src="behavior/jquery.bgiframe.min.js"></script>
+  <script type="text/javascript" src="behavior/jquery.cluetip.min.js"></script>
+  <script type="text/javascript" src="behavior/Mazama_databrowser.js"></script>
+  <script type="text/javascript" src="behavior/iphone.js"></script>
+  
+  
+ 
+<!--  
+NEW! In order for databrowsers to work on iphone a iphone css properties are being added
+-->
+  
+   <meta name="viewport" content="user-scalable=no, width=device-width" /> <!-- zooms based on the screen size of devise -->
+   <link rel="stylesheet" type="text/css" href="style/iphoneOnly.css"  />
+
+
+  
+</head> 
+
+<body>
+
+    <h1 id="databrowserTitle">TrigFunctions databrowser</h1>
+   </div>
+
+
+
+    <div id="controls" class="span-8">
+		
+		<form id="controls_form" name="controls_form">
+
+        <!-- The following variables are hidden but can be set in javascript. -->
+        <input id="language" type="hidden" name="language" value="en">
+        <input id="plotType" type="hidden" name="plotType" value="TrigFunctions">
+        <input id="plotWidth" type="hidden" name="plotWidth" value="320">
+
+        
+
+         
+
+            <select id="trigFunction" name="trigFunction">
+              <option value="cos">cosine</option>
+              <option value="sin">sine</option>
+              <option value="tan">tangent</option>
+              <option value="acos">arc cosine</option>
+              <option value="asin">arc sine</option>
+              <option value="atan">arc tangent</option>
+              <option value="generateError">generate R error</option>
+            </select>
+
+          <!-- END of analysis -->
+
+        
+
+       
+			
+          
+			  
+            <select id="lineColor" name="lineColor">
+              <option selected value="black">black</option>
+              <option value="red">red</option>
+              <option value="blue">blue</option>
+            </select>
+
+            <!-- Room for other plot options here. -->
+
+     
+       
+		</form>
+        <!-- END of plot_options_container -->
+
+
+
+    </div>
+    <!-- END of controls -->
+    
+    <div id="plot_container" class="span-16 last">
+
+      <div>
+        <img id="plot" />
+      </div>
+      <!--
+        NOTE:  Enable the pdf link only if you have ImageMagick or GraphicsMagick installed
+        NOTE:  A valid pdf_url will be created only if TrigFunctions.R.in has: viaPDF='true'
+      <div>
+        <a id="pdf">pdf</a>
+      </div>
+      -->
+
+    </div>
+
+
+</body>
+</html>
+

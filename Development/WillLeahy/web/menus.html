@@ -1,0 +1,213 @@
+
+<html>
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="chosen/chosen.jquery.js"></script>
+	<link type="text/css" rel="stylesheet" href="chosen/chosen.css">
+	<style>
+
+		body {
+			font-family: helvetica;
+			margin:0;
+			color: rgb(30,30,300px);
+		}
+
+		span {
+			display:block;
+			margin-bottom:10px;
+		}
+
+		#wrapper {
+			width:800;
+			margin:0 auto;
+			padding-top: 15px;
+		}
+
+		#menu {
+			float:left;
+			width:350px;
+		}
+
+		#plot {
+			box-sizing:border-box;
+			padding:5px;
+			float:right;
+			width:450px;
+		}
+
+		p {
+			font-size:0.8em;
+			padding:0 23px;
+		}
+
+		h2 {
+			margin:10px 10px 10px 23px;
+			padding-bottom:7px;
+		}
+
+		#pic {
+			width:100%;
+		}
+
+		.chosen {
+			width:215px;
+		}
+
+		fieldset {
+		  	border: none;
+		 }
+
+		label {
+			display: block;
+			padding: 5px 1px;
+			font-size:0.8em;
+			font-weight:500;
+		}
+
+		.flag {
+			width:28px;
+		}
+
+		ul {
+			list-style:none;
+			padding:0;
+			margin:0;
+		}
+
+		.flagList {
+			cursor:pointer;
+			box-sizing:border-box;
+			padding: 0px 6px;
+			margin: 1px;
+			float:left;
+			border:1px solid white;
+		}
+
+		.flagList.selected{
+			border:1px solid rgb(180,180,180);
+			background:rgb(240,240,240);
+		}
+
+		.flagList:hover{
+			border:1px solid rgb(180,180,180);
+			background-color: rgb(50,50,50);
+		}
+
+		.flagList:active{
+			border:1px solid rgb(180,180,180);
+			background:rgb(240,240,240);
+		}
+
+		#proj_toggle{
+			cursor:pointer;
+			font-size:0.8em;
+			width:50px;
+			height:25px;
+			line-height: 25px;
+			border:1px solid rgb(180,180,180);
+			background-color:rgb(240,240,240);
+			text-align:center;
+		}
+
+		#proj_toggle:hover{
+			color:white;
+			background-color: rgb(50,50,50);
+		}
+
+
+	</style>
+</head>
+<body>
+	<script>
+			$(document).ready(function(){
+
+               var init_language = 'en';
+               var init_country = 'US';
+
+               $.getJSON( "test.json", function( data ) {
+
+                    $(".chosen").chosen({disable_search_threshold: 15});
+
+                    dataset = data;
+                    
+                     function newLanguage(language, country){
+                         var textList = dataset[language];
+
+                         $(".chosen").empty();
+                         var country_output = [];
+
+                         country_list1 = textList.countries.sort(SortByName);
+                         country_list2 = textList.countries.sort(SortByName);
+
+                         $.each(country_list1, function(){
+                           country_output.push('<option value="'+ this.code +'">'+ this.name +'</option>');
+                         });
+
+                         $.each(country_list2, function(){
+                           country_output.push('<option value="'+ this.code +'">'+ this.name +'</option>');
+                         });
+
+                         $('#countryCode1').html(country_output.join(''));
+                         $('#countryCode2').html(country_output.join(''));
+
+                         $("#countryCode1").val(country);
+                         $("#countryCode2").val(country);
+
+                         $(".chosen").trigger("chosen:updated")
+
+                    };
+
+                    function SortByName(a, b){
+                         var aName = a.name.toLowerCase();
+                         var bName = b.name.toLowerCase(); 
+                         return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+                    }
+
+                    newLanguage(init_language, init_country);
+
+                    $("#countryCode1_chosen .chosen-drop").click(function(){
+                     	str = $(this).parent().attr("id")
+                     	str = "#" + str.substring(0,str.length-7) 
+                     	console.log($(str).val())
+                     	console.log($(str + " option:selected").text())
+                    })
+
+                    $("#countryCode2_chosen .chosen-drop").click(function(){
+                     	str = $(this).parent().attr("id")
+                     	str = "#" + str.substring(0,str.length-7) 
+                     	console.log($(str).val())
+                     	console.log($(str + " option:selected").text())
+                    })
+
+               });
+
+			});
+	</script>
+
+
+<div id="wrapper">
+	<div id="menu">
+	<!-- 	<p>Explore the US Census Bureau's <a href="http://www.census.gov/population/international/">Internation Data Base</a></p> -->
+		<fieldset>
+	<span>
+	<label id="country_men">Country or Region</label>
+	<select class="chosen" id="countryCode1" name="countryCode"></select>
+	</span>
+
+	<span>
+	<label id="country_men">Second Country</label>
+	<select class="chosen" id="countryCode2" name="countryCode"></select>
+	</span>
+    
+
+</span>
+
+</fieldset>
+</div>
+<div id='plot'>
+<img id="pic" src="plot.png"
+	</div>
+
+</div>
+</body>
+</html>
